@@ -20,10 +20,16 @@
   font-weight: bold;
   text-decoration: none;
   color: #333333;
+
+  transition: transform .2s linear;
 }
 
 .logo-link {
   font-weight: normal;
   font-size: 40px;
   font-family: 'Moo Lah Lah', cursive;
+}
+
+.nav-link:hover {
+  transform: scale(1.1);
 }
