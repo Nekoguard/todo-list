@@ -8,7 +8,7 @@ import TodoListPage from "../pages/todo-list-page";
 
 const App = () => {
   return (
-    <div>
+    <div className="todo-app">
       <Header />
 
       <Routes>

@@ -5,10 +5,12 @@ import {NavLink} from "react-router-dom";
 
 const Header = () => {
   return (
-    <nav>
-      <NavLink to="/">TODO</NavLink>
-      <NavLink to="/todo-list-page/">Show list</NavLink>
-    </nav>
+    <header className="todo-header">
+      <nav className="todo-nav">
+        <NavLink className="nav-link logo-link" to="/">TODO</NavLink>
+        <NavLink className="nav-link" to="/todo-list-page/">Show list</NavLink>
+      </nav>
+    </header>
   );
 };
 
