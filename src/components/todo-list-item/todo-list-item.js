@@ -2,12 +2,12 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTrash, faCheck, faPen } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import "./todo-list-item.css";
 import { onItemToggleCompleted, onItemDeleted } from "../../actions";
 
-library.add(faCheck, faTrash, faPen);
+library.add(faCheck, faTrash);
 
 const TodoListItem = ({title, id, isCompleted, onToggleCompleted, onDelete}) => {
   const toggleCompleted = (e) => {
@@ -23,9 +23,6 @@ const TodoListItem = ({title, id, isCompleted, onToggleCompleted, onDelete}) => 
       <span className={isCompleted ? "title completed" : "title"}>{title} ({id})</span>
 
       <div className="actions">
-        <button className="action-btn edit-btn" onClick={() => {}}>
-          <FontAwesomeIcon icon={ faPen }/>
-        </button>
         <button id={id} className="action-btn done-btn" onClick={toggleCompleted}>
           <FontAwesomeIcon icon={ faCheck }/>
         </button>

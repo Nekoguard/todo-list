@@ -14,7 +14,12 @@ class TodoList extends React.Component {
   }
 
   render() {
-    const { loading, error, items } = this.props;
+    const { loading, error, items, currentPage, perPage, totalPages } = this.props;
+
+    const pagesArray = [];
+    for (let i = 0; i < totalPages; i++) {
+      pagesArray[i] = items.slice((i*perPage), (i*perPage) + perPage);
+    }
 
     if (loading) {
       return <LoadingIndicator />
@@ -27,7 +32,7 @@ class TodoList extends React.Component {
     return (
       <ul className="todo-list">
         {
-          items.length > 0 ? items.map((item) => {
+          pagesArray.length > 0 ? pagesArray[currentPage - 1].map((item) => {
             return (
               <li className="todo-list-item" key={item.id}>
                 <TodoListItem isCompleted={item.completed} id={item.id} title={item.title} />
@@ -44,7 +49,10 @@ const mapStateToProps = (state) => {
   return {
     items: state.todoItems,
     loading: state.loading,
-    error: state.error
+    error: state.error,
+    currentPage: state.currentPage,
+    perPage: state.perPage,
+    totalPages: state.totalPages
   }
 }
 

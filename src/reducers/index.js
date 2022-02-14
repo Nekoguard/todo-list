@@ -3,7 +3,9 @@ const initialState = {
   loading: true,
   error: null,
   currentTitle: "",
-  editedItem: null
+  currentPage: 1,
+  perPage: 20,
+  totalPages: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -21,6 +23,7 @@ const reducer = (state = initialState, action) => {
         todoItems: [
           ...action.payload
         ],
+        totalPages: Math.ceil(action.payload.length / state.perPage),
         loading: false,
         error: null
       };
@@ -88,6 +91,11 @@ const reducer = (state = initialState, action) => {
         todoItems: [
           ...updatedItems
         ]
+      }
+    case "SET_CURRENT_PAGE":
+      return {
+        ...state,
+        currentPage: action.payload
       }
     default:
       return state;
