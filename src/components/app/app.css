@@ -15,7 +15,7 @@
 .home-page {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 30px 0 0;
+  padding: 30px 0;
 }
 
 .home-page .logo {
@@ -36,6 +36,17 @@
   font-size: 25px;
   line-height: 50px;
   text-align: center;
+}
+
+.list-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.list-page-title {
+  font-size: 25px;
+  margin: 0 0 15px;
 }
 
 /* font-family: 'Moo Lah Lah', cursive; */

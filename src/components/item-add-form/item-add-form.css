@@ -1,0 +1,29 @@
+.item-add-form {
+  width: 100%;
+  margin: 20px 0 40px;
+  padding: 10px 0;
+  display: flex;
+
+  border-bottom: 2px solid #aaaaaa;
+  border-top: 2px solid #aaaaaa;
+  border-radius: 5px;
+}
+
+.item-add-input {
+  width: 50%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.item-add-btn {
+  padding: 5px 15px;
+  margin: 0 0 0 10px;
+
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #c5b3e8;
+
+  cursor: pointer;
+}

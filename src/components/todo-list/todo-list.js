@@ -30,7 +30,7 @@ class TodoList extends React.Component {
           items.length > 0 ? items.map((item) => {
             return (
               <li className="todo-list-item" key={item.id}>
-                <TodoListItem title={item.title} />
+                <TodoListItem isCompleted={item.completed} id={item.id} title={item.title} />
               </li>
             )
           }) : null

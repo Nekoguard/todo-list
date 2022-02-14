@@ -25,10 +25,10 @@ const itemCompleted = (itemId) => {
   }
 }
 
-const itemAddedToList = (itemId) => {
+const itemAddedToList = (title) => {
   return {
     type: "ITEM_ADDED_TO_LIST",
-     payload: itemId
+    payload: title
   }
 }
 
@@ -39,13 +39,28 @@ const itemDeletedFromList = (itemId) => {
   }
 }
 
+const onTitleChange = (e) => {
+  return {
+    type: "CURRENT_TITLE_CHANGED",
+    payload: e.target.value ? e.target.value : ""
+  }
+}
+
 const fetchItems = (todoListService, dispatch) => {
   dispatch(itemsRequested());
 
   todoListService.getTodos()
-    .then((data) => dispatch(itemsLoaded(data)))
+    .then((data) => dispatch(itemsLoaded(data.reverse())))
     .catch((err) => dispatch(itemsError(err)));
 };
+
+
+const onItemToggleCompleted = (id) => {
+  return {
+    type: "ITEM_TOGGLED_COMPLETED",
+    payload: id
+  }
+}
 
 export {
   itemAddedToList,
@@ -54,5 +69,7 @@ export {
   itemsError,
   itemsLoaded,
   itemsRequested,
-  fetchItems
+  fetchItems,
+  onTitleChange,
+  onItemToggleCompleted,
 }
