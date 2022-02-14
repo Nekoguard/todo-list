@@ -5,13 +5,17 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTrash, faCheck, faPen } from "@fortawesome/free-solid-svg-icons";
 
 import "./todo-list-item.css";
-import { onItemToggleCompleted } from "../../actions";
+import { onItemToggleCompleted, onItemDeleted } from "../../actions";
 
 library.add(faCheck, faTrash, faPen);
 
-const TodoListItem = ({title, id, isCompleted, onToggleCompleted}) => {
+const TodoListItem = ({title, id, isCompleted, onToggleCompleted, onDelete}) => {
   const toggleCompleted = (e) => {
     onToggleCompleted(e.currentTarget.id);
+  }
+
+  const deleteItem = (e) => {
+    onDelete(e.currentTarget.id);
   }
 
   return (
@@ -25,7 +29,7 @@ const TodoListItem = ({title, id, isCompleted, onToggleCompleted}) => {
         <button id={id} className="action-btn done-btn" onClick={toggleCompleted}>
           <FontAwesomeIcon icon={ faCheck }/>
         </button>
-        <button className="action-btn trash-btn" onClick={() => {}}>
+        <button id={id} className="action-btn trash-btn" onClick={deleteItem}>
           <FontAwesomeIcon icon={ faTrash } />
         </button>
       </div>
@@ -41,7 +45,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onToggleCompleted: (id) => dispatch(onItemToggleCompleted(id))
+    onToggleCompleted: (id) => dispatch(onItemToggleCompleted(id)),
+    onDelete: (id) => dispatch(onItemDeleted(id))
   }
 }
 

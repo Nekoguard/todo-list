@@ -62,6 +62,13 @@ const onItemToggleCompleted = (id) => {
   }
 }
 
+const onItemDeleted = (id) => {
+  return {
+    type: "ITEM_DELETED_FROM_LIST",
+    payload: id
+  }
+}
+
 export {
   itemAddedToList,
   itemCompleted,
@@ -72,4 +79,5 @@ export {
   fetchItems,
   onTitleChange,
   onItemToggleCompleted,
+  onItemDeleted
 }

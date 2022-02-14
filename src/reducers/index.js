@@ -33,7 +33,7 @@ const reducer = (state = initialState, action) => {
       };
     case "ITEM_ADDED_TO_LIST":
       const newItem = {
-        id: state.todoItems.length + 1,
+        id: state.todoItems[0].id + 1,
         userId: Math.floor(state.todoItems.length / 20) + 1,
         title: `${action.payload}`,
         completed: false
@@ -47,7 +47,22 @@ const reducer = (state = initialState, action) => {
         ]
       };
     case "ITEM_DELETED_FROM_LIST":
-      return state;
+      const reverseItems = state.todoItems.reverse();
+      const index = reverseItems.findIndex(item => item.id === Number(action.payload));
+
+      const newItems = [
+        ...reverseItems.slice(0, index),
+        ...reverseItems.slice(index + 1)
+      ]
+
+      newItems.reverse();
+
+      return {
+        ...state,
+        todoItems: [
+          ...newItems
+        ]
+      };
     case "CURRENT_TITLE_CHANGED":
       return {
         ...state,
